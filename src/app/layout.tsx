@@ -1,9 +1,11 @@
-import './globals.scss'
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
-import {SITE_NAME} from "@/constants/seo";
-import {Providers} from "@/app/providers";
-import {Toaster} from "sonner";
+import { Toaster } from 'sonner'
+
+import { SITE_NAME } from '@/constants/seo'
+
+import './globals.scss'
+import { Providers } from './providers'
 
 const zen = Noto_Sans({
   subsets: ['cyrillic', 'latin'],
@@ -22,18 +24,23 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-}: {
+                                     children
+                                   }: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="en">
-      <body className={zen.className}>
-      <Providers>
-        {children}
-        <Toaster theme='dark' position='bottom-right' duration={1500}/>
-      </Providers>
-      </body>
+    <html lang='en'>
+    <body className={zen.className}>
+    <Providers>
+      {children}
+
+      <Toaster
+        theme='dark'
+        position='bottom-right'
+        duration={1500}
+      />
+    </Providers>
+    </body>
     </html>
   )
 }
